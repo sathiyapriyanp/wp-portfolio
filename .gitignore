@@ -1,0 +1,26 @@
+*/node_modules/*
+/assets/temp/*
+
+build-tools/node_modules/*
+*.DS_Store
+*copy*
+assets/.DS_Store
+
+*.log
+*.swp
+
+# Ignore compresed files.
+*.zip
+*.tar.gz
+*.tar
+
+# Ignore debug and development files
+*.debug
+*.dev
+
+# Ignore build and package management files
+node_modules/
+npm-debug.log
+yarn-error.log
+composer.phar
+/vendor/

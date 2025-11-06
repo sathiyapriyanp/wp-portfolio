@@ -1,0 +1,43 @@
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+:root{
+    --swiper-navigation-color: rgb(22 101 52)
+}
+.collapsing{
+    height: 0;
+    overflow: hidden;
+    transition: height .35s ease;
+}
+body{
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+
+
+@layer base{
+    html{
+        scroll-behavior: smooth;
+    }
+    svg{
+        display: inline-block;
+    }
+  
+    input,select,textarea {
+        border: 1px solid transparent;
+    }
+}
+
+.has-error{
+    @apply border-red-300
+}
+
+@layer utilities{
+
+
+}

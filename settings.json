@@ -1,0 +1,101 @@
+{
+    "options":{
+        "website-footer" : {
+            "title" : "Website Footer",
+            "options" : {
+                "footer-title":"",
+                
+                "iso-certificate":{
+                    "type" : "image"
+                },
+                "contact-image":{
+                    "type" : "image"
+                },
+                "main-address":{
+                    "type" : "textarea"
+                },
+                "license":{
+                    "type" : "text"
+                    
+                },
+                "copyright":{
+                    "type" : "text",
+                    "description" : "user '%d' for Year placeholder"
+                },
+                "googlemap-link":""
+            }
+        },
+        "social" : {
+            "title" : "Social Links",
+            "options" : {
+                "facebook" : {
+                    "type" : "text"
+                },
+                "instagram": "",
+                "twitter":"",
+                "whatsapp": "",
+                "linkedin":""
+
+            },
+            "priority" : 100
+        },
+        "contact" :{
+            "title" : "Contact Information",
+            "options" : {
+                "phone-number" : {
+                    "placeholder" : "0505098995",
+                    "default" : ""
+                },
+                "email":{
+                    "type": "email"
+                },
+                "address" : {
+                    "type" : "textarea"
+                }
+            }
+        },
+        "maintenance":{
+            "title": "Maintenance",
+            "description" : "If it enabled. will show maintenance page for all public / non admin users.",
+            "options": {
+            
+                "maintenance_enabled" : {
+                    "title": "Enable Maintenance Mode",
+                    "type" : "checkbox",
+                    "default" : false,
+                    "value" : true
+                },
+                "maintenance_title" : {},
+                "maintenance_sub_title" : {}
+            }
+        },
+        "alain_header":{
+            "title": "Header",
+            "options": {
+            
+                "ecommerce_url" : {
+                    "title": "E-commerce URL"
+                },
+                "maintenance_title" : {},
+                "maintenance_sub_title" : {}
+            }
+        }
+    },
+    "settings":{
+        "icon":"",
+        "name": "",
+        "priority": "",
+        "pages":[
+            {
+                "general":{
+                    "title" : "General",
+                    "options": {
+                        "email":{
+                            "type": "email"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
