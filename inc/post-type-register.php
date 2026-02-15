@@ -40,3 +40,30 @@ $args = array(
 );
 register_post_type( 'blogs', $args );
 
+/* === NURSES === */
+$labels = array(
+    'name'               => 'Nurses',
+    'singular_name'      => 'Nurse',
+    'add_new'            => 'Add New',
+    'add_new_item'       => 'Add New Nurse',
+    'edit_item'          => 'Edit Nurse',
+    'new_item'           => 'New Nurse',
+    'view_item'          => 'View Nurse',
+    'search_items'       => 'Search Nurse',
+    'not_found'          => 'No Nurse found',
+    'not_found_in_trash' => 'No Nurse found in Trash',
+    'menu_name'          => 'Nurses'
+);
+
+$args = array(
+    'labels'             => $labels,
+    'public'             => true,
+    'has_archive'        => true, // ✅ IMPORTANT for archive-nurse.php
+    'rewrite'            => array( 'slug' => 'nurse' ), // ✅ URL will be /nurse/
+    'supports'           => array( 'title', 'editor', 'thumbnail' ),
+    'menu_icon'          => 'dashicons-admin-users',
+    'show_in_rest'       => true,
+);
+register_post_type( 'nurse', $args );
+
+

@@ -1,4 +1,8 @@
 <?php
+
+// exit;  (don’t use exit)
+?>
+<?php
 /**
  * The template for displaying search results pages
  *
@@ -63,6 +67,7 @@ get_template_part("templates-parts/banner","with-form",[
 	}
 	?>
 </div>
+
 <?php
 
 get_footer();
