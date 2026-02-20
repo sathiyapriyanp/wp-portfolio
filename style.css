@@ -9,3 +9,22 @@
     Text Domain: 
     Domain Path: 
 */
+
+html, body {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Edge/IE */
+  overflow-x: hidden; /* Side-la scroll aagatha maari fix panna */
+}
+
+/* 2. Chrome, Safari, and Brave browser-ku */
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 3. Intha class-ah unga full-page wrapper-kum apply pannalam */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -1,271 +1,326 @@
-
-
-// Optional: AOS animation init
-console.log("MAIN JS LOADED");
-/* 
-AOS?.init && AOS.init({ duration: 700 }); */
-
-(() => {
-
-  // ===== Filter popup open/close =====
-  const openFilter = document.getElementById("openFilter");
-  const closeFilter = document.getElementById("closeFilter");
-  const filterPopup = document.getElementById("filterPopup");
-
-  if (openFilter && filterPopup) {
-    openFilter.addEventListener("click", () => filterPopup.classList.add("show"));
-  }
-  if (closeFilter && filterPopup) {
-    closeFilter.addEventListener("click", () => filterPopup.classList.remove("show"));
-  }
-
-  // ===== Header scroll effect =====
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector('.site-header');
-    if (header) {
-      if (window.scrollY > 100) header.classList.add("active");
-      else header.classList.remove("active");
-    }
-  });
-
-  // ===== jQuery ready =====
-  jQuery(document).ready(function ($) {
-
-    // ===== Mobile Menu Toggle =====
-    $('.menu-toggle').on('click', () => $('.main-navigation').addClass('active'));
-    $('.menu-close').on('click', () => $('.main-navigation').removeClass('active'));
-
-    // ===== Hero Swiper Slider =====
-    if (typeof Swiper !== "undefined" && document.querySelector(".mySwiper")) {
-      new Swiper(".mySwiper", {
-        loop: true,
-        autoplay: { delay: 3000, disableOnInteraction: false },
-        pagination: { el: ".swiper-pagination", clickable: true },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      });
-      console.log("✅ Hero Swiper initialized");
-    }
-
-    // ===== Contact form success modal =====
-    const contactForm = $(".fcf-contact-us")[0];
-    if (contactForm) {
-      contactForm.addEventListener("form_success", function () {
-        const modalEl = document.querySelector('#exampleModal');
-        if (modalEl) new bootstrap.Modal(modalEl, { keyboard: false }).show();
-      });
-    }
-
-    // ===== Popular Nurses Horizontal Scroll + Drag + Click + Auto-Scroll =====
-    const track = $('.popular-nurses-track');
-
-if(track.length){
-
-    // Ensure track is scrollable (looping works only if wide)
-    const trackEl = track[0];
-    const wrapper = track.parent();
-
-    // Duplicate items so scrollWidth becomes larger than container
-    if(trackEl.scrollWidth <= wrapper.width()){
-        let cloneCount = 0;
-        while(trackEl.scrollWidth <= wrapper.width() * 1.5 && cloneCount < 5){
-            track.append(track.children().clone(true));
-            cloneCount++;
-        }
-    }
-
-    let isDown = false,
-        startX,
-        scrollLeft,
-        isDragging = false;
-
-    // Mouse drag start
-    track.on('mousedown', function(e){
-        isDown = true;
-        isDragging = false;
-        $(this).addClass('active');
-        startX = e.pageX - $(this).offset().left;
-        scrollLeft = this.scrollLeft;
-    });
-
-    // Mouse drag move
-    track.on('mousemove', function(e){
-        if(!isDown) return;
-        e.preventDefault();
-        isDragging = true;
-        const x = e.pageX - $(this).offset().left;
-        const walk = (x - startX) * 1.6;
-        this.scrollLeft = scrollLeft - walk;
-    });
-
-    // Mouse drag end
-    track.on('mouseup mouseleave', function(){
-        isDown = false;
-        $(this).removeClass('active');
-    });
-
-    // Prevent click when dragging
-    $('.popular-nurse-card a').on('click', function(e){
-        if(isDragging) e.preventDefault();
-    });
-
-    // Auto-scroll
-    let speed = 0.6;
-    function autoScroll(){
-        if(!isDown){
-            track.scrollLeft(track.scrollLeft() + speed);
-
-            if(track.scrollLeft() >= trackEl.scrollWidth / 2){
-                track.scrollLeft(0);
-            }
-        }
-        requestAnimationFrame(autoScroll);
-    }
-    autoScroll();
-}
-
-//3d slider start
-// ===== 3D Slider Section =====
-// ===== 3D Slider Mouse Effect =====
-// ===== 3D Slider Mouse Effect =====
-// ===== 3D Circular Slider =====
-const $sliderTrack = $('#sliderTrack');
-const $cards = $sliderTrack.find('.slider-card');
-let current = 0;
-
-function updateSlider() {
-  const total = $cards.length;
-
-  $cards.removeClass('active left right far-left far-right');
-
-  $cards.each(function (i) {
-    const position = (i - current + total) % total;
-
-    if (position === 0) $(this).addClass('active');
-    else if (position === 1) $(this).addClass('right');
-    else if (position === 2) $(this).addClass('far-right');
-    else if (position === total - 1) $(this).addClass('left');
-    else if (position === total - 2) $(this).addClass('far-left');
-  });
-}
-updateSlider();
-
-// Click to center
-$cards.on('click', function () {
-  current = $cards.index(this);
-  updateSlider();
-});
-$cards.on('click', function () {
-  const clickedIndex = $cards.index(this);
-  if (clickedIndex === current) return; // already center — ignore
-  current = clickedIndex;
-  updateSlider();
-});
-let clickCooldown = false;
-
-$cards.on('click', function () {
-  if (clickCooldown) return;
-  const clickedIndex = $cards.index(this);
-  if (clickedIndex === current) return;
-
-  clickCooldown = true;
-  setTimeout(() => clickCooldown = false, 400); // 400ms lock
-
-  current = clickedIndex;
-  updateSlider();
-});
-
-
-//3d slider end
-
-//mobile slide section 2 daman
-
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-  let index = 0;
-  const slider = document.getElementById("mobileSlider");
-  if (!slider) return; // ✓ Prevent errors if slider not on page
-
-  const slides = slider.children;
-  const dots = document.querySelectorAll(".dot");
-
-  function updateSlider() {
-    slider.style.transform = `translateX(-${index * 100}%)`;
-
-    dots.forEach(d => d.classList.remove("bg-gray-800"));
-    dots[index].classList.add("bg-gray-800");
-  }
-
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    updateSlider();
-  }, 3000);
-
-  updateSlider();
-});
- (function () {
-      const inner = document.getElementById('trackInner');
-      if (!inner) return;
-
-      // Duplicate once to create continuous loop
-      inner.innerHTML = inner.innerHTML + inner.innerHTML;
-
-      // Compute duration so speed is consistent across screen sizes
-      function setDuration() {
-        const total = inner.scrollWidth / 2; // width of one set
-        const speed = window.matchMedia('(max-width: 640px)').matches ? 60 : 45; // px per second
-        const seconds = Math.max(8, Math.round(total / speed));
-        inner.style.setProperty('--duration', seconds + 's');
-      }
-
-      setDuration();
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(setDuration, 120);
-      });
-
-      // Pause while interacting and resume on release (good for touch)
-      let isTouching = false;
-      inner.addEventListener('pointerdown', () => { inner.style.animationPlayState = 'paused'; isTouching = true; });
-      window.addEventListener('pointerup', () => { if (isTouching) { inner.style.animationPlayState = ''; isTouching = false; } });
-      inner.addEventListener('mouseenter', () => { inner.style.animationPlayState = 'paused'; });
-      inner.addEventListener('mouseleave', () => { inner.style.animationPlayState = ''; });
-
-      // Respect reduced motion
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        inner.style.animation = 'none';
-      }
-    })();
-
-
-    
+(() => {    
   const dot = document.getElementById('cursor-dot');
   const outline = document.getElementById('cursor-outline');
 
-  window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
+  // Only run on desktop
+  if (window.matchMedia("(min-width: 768px)").matches) {
 
-    // Dot immediately follows mouse
-    dot.style.left = posX + 'px';
-    dot.style.top = posY + 'px';
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+    const speed = 0.2; // lag speed
 
-    // Outline follows with smooth lag
-    outline.animate({
-      left: posX + 'px',
-      top: posY + 'px'
-    }, { duration: 400, fill: "forwards" });
-  });
+    // Track mouse movement
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-  // Buttons hover panna cursor perusaagum
-  const links = document.querySelectorAll('a, button, .group');
-  links.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      outline.classList.add('cursor-hover-active');
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
     });
-    link.addEventListener('mouseleave', () => {
-      outline.classList.remove('cursor-hover-active');
+
+    function animateOutline() {
+      outlineX += (mouseX - outlineX) * speed;
+      outlineY += (mouseY - outlineY) * speed;
+
+      outline.style.left = outlineX + 'px';
+      outline.style.top = outlineY + 'px';
+
+      requestAnimationFrame(animateOutline);
+    }
+    animateOutline();
+
+    // Hover effects
+    const links = document.querySelectorAll('a, button, .group');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        outline.classList.add('cursor-hover-active');
+      });
+      link.addEventListener('mouseleave', () => {
+        outline.classList.remove('cursor-hover-active');
+      });
     });
-  });
+
+  } else {
+    // Mobile: remove all cursor elements
+    if (dot) dot.remove();
+    if (outline) outline.remove();
+  }
 
 })();
+
+ const swiper = new Swiper(".projectSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: false, // Set to true if you want infinite loop
+    navigation: {
+      nextEl: ".project-next",
+      prevEl: ".project-prev",
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 2.3 } // Shows 2 full and a bit of the 3rd
+    },
+    on: {
+      init: function () { updateProgressBar(this); },
+      slideChange: function () { updateProgressBar(this); }
+    }
+  });
+
+  function updateProgressBar(s) {
+    const progress = ((s.activeIndex) / (s.slides.length - s.params.slidesPerView)) * 100;
+    document.querySelector('.swiper-progress-bar').style.width = `${progress}%`;
+  }
+
+  // Video Play on Hover (Inside Swiper)
+  document.querySelectorAll('.swiper-slide').forEach(slide => {
+    const video = slide.querySelector('video');
+    if(video) {
+      slide.addEventListener('mouseenter', () => video.play());
+      slide.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
+  });
+  // js/main.js
+
+// Page full-ah load aagura varaikkum wait pannum
+window.addEventListener("load", function() {
+    
+    // Check if GSAP is available
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // -------------------------------------------------------
+        // 1. HERO SECTION - Cinematic Entrance
+        // -------------------------------------------------------
+        const heroTl = gsap.timeline();
+
+        heroTl
+            .from("#hero", { opacity: 0, duration: 1 })
+            .from("#hero h1", { 
+                y: 100, 
+                opacity: 0, 
+                skewY: 7, 
+                duration: 1.2, 
+                ease: "expo.out" 
+            }, "-=0.5")
+            .from("#hero p", { 
+                y: 30, 
+                opacity: 0, 
+                duration: 0.8 
+            }, "-=0.8")
+            .from("#hero a", { 
+                scale: 0.8, 
+                opacity: 0, 
+                stagger: 0.2, 
+                ease: "back.out(1.7)" 
+            }, "-=0.5")
+            .from(".group\\/profile", { 
+                scale: 0.9, 
+                opacity: 0, 
+                duration: 1.5, 
+                ease: "elastic.out(1, 0.5)" 
+            }, "-=1");
+
+
+        // -------------------------------------------------------
+        // 2. TECH STACK - Staggered Grid Reveal
+        // -------------------------------------------------------
+        // main.js kulla...
+
+// 1. Selector-a correct-ah ".grid > div" nu mathunga
+// Appo thaan cards ovvonna zoom aagum
+gsap.from("#tech-stack .grid > div", {
+    scrollTrigger: {
+        trigger: "#tech-stack",
+        start: "top 80%", // Konjam mela trigger aagura mari vachukalam
+        markers: false,   // Check panna true nu mathi parunga (screen-la lines varum)
+    },
+    scale: 0.1,         // Romba chinnathula irunthu
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "back.out(1.7)",
+    clearProps: "all"   // Animation mudinjathuku apram hidden state-la irukatha thadukkum
+});
+
+// 2. Progress bar logic (Cards vanthutu apram start aaganum)
+gsap.from("#tech-stack .h-full", {
+    scrollTrigger: {
+        trigger: "#tech-stack",
+        start: "top 60%",
+    },
+    width: "0%",
+    duration: 1.2,
+    delay: 0.5,
+    ease: "power2.out"
+});
+
+
+        // -------------------------------------------------------
+        // 3. EDUCATION - Alternating Timeline Pop
+        // -------------------------------------------------------
+        const eduCards = gsap.utils.toArray("#education .group");
+        
+        eduCards.forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                x: i % 2 === 0 ? -50 : 50, // Even cards left, odd cards right
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        console.log("All Animations Initialized!");
+
+    } else {
+        console.error("GSAP not detected. Check functions.php enqueue order.");
+    }
+});
+
+//==========
+// mywork animation
+//=========
+// Works Section Entrance
+// main.js file kulla...
+
+window.addEventListener("load", function() {
+    
+    // 1. Swiper-a initialize pannuvom
+    const swiper = new Swiper('.projectSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 2.5 }
+        }
+    });
+
+    // 2. Swiper ready aanathuku apram GSAP-a trigger pannuvom
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Title Animation
+        gsap.from("#projects h3", {
+            scrollTrigger: {
+                trigger: "#projects",
+                start: "top 80%",
+            },
+            x: -100,
+            opacity: 0,
+            duration: 1.2,
+            ease: "expo.out"
+        });
+
+        // Swiper Container Zoom-in
+        gsap.from(".projectSwiper", {
+            scrollTrigger: {
+                trigger: "#projects",
+                start: "top 70%",
+            },
+            scale: 0.8, // Scale konjam korachi kudupom zoom-in nalla theriyum
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        });
+    }
+});
+//==========
+//============
+//my exp animation
+//===============
+// js/main.js
+window.addEventListener("load", function() {
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // EXPERIENCE CARDS ANIMATION
+        // Card-oda outer div-a target panrom
+        gsap.from("#experience .group", {
+            scrollTrigger: {
+                trigger: "#experience",
+                start: "top 75%",
+                // markers: true, // Itha enable panna screen-la triggers theriyum, check panna easy-ah irukum
+            },
+            y: 80,              // Keela irunthu mela varum
+            opacity: 0,
+            scale: 0.9,         // Light-ah zoom-in aagum
+            duration: 1,
+            stagger: {
+                amount: 0.4     // Ovvoru card-kum gap kudukum
+            },
+            ease: "power3.out",
+            onComplete: function() {
+                // Animation mudinjathuku apram CSS Hover work aaga properties-a clear pannum
+                gsap.set("#experience .group", { clearProps: "transform,opacity" });
+            }
+        });
+
+    }
+});
+//============
+window.addEventListener("load", function() {
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Contact Section - Side Entrance
+        gsap.from("#contact .max-w-4xl", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 90%", // Section 90% screen-ku vanthona start aagum
+                toggleActions: "play none none reverse",
+            },
+            x: 200,            // Right side-la irunthu 200px thalli start aagum
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+        });
+
+        // Contact Card - Pop up effect (Title vanthathuku apram)
+        gsap.from("#contact .group", {
+            scrollTrigger: {
+                trigger: "#contact .group",
+                start: "top 85%",
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "back.out(1.7)"
+        });
+    }
+});
+// Magnetic Button Logic for Contact Email
+const emailBtn = document.querySelector('a[href*="mail.google.com"]');
+
+if(emailBtn) {
+    emailBtn.addEventListener('mousemove', (e) => {
+        const rect = emailBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(emailBtn, {
+            x: x * 0.5,
+            y: y * 0.5,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+
+    emailBtn.addEventListener('mouseleave', () => {
+        gsap.to(emailBtn, {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
+}
+
+

@@ -91,5 +91,16 @@ function bluelogic_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'bluelogic_enqueue_assets');
 
+function enqueue_gsap_scripts() {
+    // 1. GSAP Core Library
+    wp_enqueue_script('gsap-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), null, true);
 
+    // 2. GSAP ScrollTrigger Plugin
+    wp_enqueue_script('gsap-st', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap-js'), null, true);
+
+    // 3. Unga Custom Animation Script (e.g., main.js)
+    // Intha file-la thaan mela namma ezhuthuna GSAP code-ellam irukanum
+    wp_enqueue_script('my-custom-animations', get_template_directory_uri() . '/js/main.js', array('gsap-js', 'gsap-st'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_gsap_scripts');
  ?>

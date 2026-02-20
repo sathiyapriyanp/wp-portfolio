@@ -31,29 +31,31 @@
 
 
   
- <nav class="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-orange-500/20">
+ <header class="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-orange-500/20">
   <div class="max-w-7xl mx-auto px-6">
     <div class="flex justify-between items-center h-20">
-      
+
+      <!-- Logo -->
       <div class="flex-shrink-0 group cursor-pointer">
         <h1 class="text-2xl font-black tracking-tighter transition-transform duration-300 group-hover:scale-105">
           <span class="text-white">Sathiya</span><span class="text-orange-500">priyan</span>
         </h1>
       </div>
 
+      <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-10">
         <a href="#projects" class="text-sm font-medium text-gray-400 hover:text-orange-500 transition-colors uppercase tracking-widest">Projects</a>
         <a href="#stack" class="text-sm font-medium text-gray-400 hover:text-orange-500 transition-colors uppercase tracking-widest">Tech Stack</a>
         <a href="#contact" class="text-sm font-medium text-gray-400 hover:text-orange-500 transition-colors uppercase tracking-widest">Contact</a>
-        
-        <a href="#hire" class="relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden font-bold text-white transition duration-300 bg-orange-600 rounded-full group hover:bg-orange-500 shadow-[0_0_20px_rgba(234,88,12,0.4)]">
+        <a href="#hire" class="relative inline-flex items-center justify-center px-8 py-2.5 font-bold text-white transition duration-300 bg-orange-600 rounded-full group hover:bg-orange-500 shadow-[0_0_20px_rgba(234,88,12,0.4)]">
           <span class="relative">Hire Me</span>
         </a>
       </div>
 
+      <!-- Mobile Menu Button -->
       <div class="md:hidden">
-        <button class="p-2 text-orange-500">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <button id="mobile-menu-button" class="p-2 text-orange-500">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
           </svg>
         </button>
@@ -61,7 +63,22 @@
 
     </div>
   </div>
-</nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-[#0a0a0a]/95 border-t border-orange-500/20">
+    <div class="px-6 py-4 flex flex-col space-y-4">
+      <a href="#projects" class="text-sm font-medium text-gray-400 hover:text-orange-500 transition-colors uppercase tracking-widest">Projects</a>
+      <a href="#stack" class="text-sm font-medium text-gray-400 hover:text-orange-500 transition-colors uppercase tracking-widest">Tech Stack</a>
+      <a href="#contact" class="text-sm font-medium text-gray-400 hover:text-orange-500 transition-colors uppercase tracking-widest">Contact</a>
+      <a href="#hire" class="inline-flex items-center justify-center px-8 py-2.5 font-bold text-white bg-orange-600 rounded-full hover:bg-orange-500 shadow-[0_0_20px_rgba(234,88,12,0.4)]">
+        Hire Me
+      </a>
+    </div>
+  </div>
+
+ 
+</header>
+
 
 
         

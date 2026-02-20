@@ -1,4 +1,6 @@
 @import url(components/test.css);
 @import url(components/header.css);
+@import url(components/banner.css);
 @tailwind components;
 @tailwind utilities;
+

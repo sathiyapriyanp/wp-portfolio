@@ -1,4 +1,8 @@
-<section id="tech-stack" class="py-24 bg-[#0a0a0a] relative overflow-hidden">
+
+<section id="tech-stack" class=" bg-[#050505] relative overflow-hidden">
+  <div class="absolute top-20 left-20 w-80 h-80 bg-orange-500/10 rounded-full filter blur-3xl animate-pulse-slow pointer-events-none"></div>
+  <div class="absolute bottom-0 right-10 w-96 h-96 bg-orange-500/5 rounded-full filter blur-2xl animate-pulse-slower pointer-events-none"></div>
+
   <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ea580c 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
@@ -6,6 +10,7 @@
     <div class="mb-16">
       <!-- <h2 class="text-orange-500 font-mono tracking-[0.4em] text-xs mb-3 uppercase">// Mastery_Inventory</h2> -->
       <h3 class="text-6xl font-black text-white italic">TECH <span class="text-orange-500">LOADOUT.</span></h3>
+      
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -87,3 +92,4 @@
     </div>
   </div>
 </section>
+

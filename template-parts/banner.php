@@ -1,6 +1,6 @@
 <div id="cursor-dot" style="position: fixed; width: 8px; height: 8px; background: #ea580c; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease-out;"></div>
 <div id="cursor-outline" style="position: fixed; width: 40px; height: 40px; border: 2px solid #ea580c; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.3s ease-out; box-shadow: 0 0 15px rgba(234, 88, 12, 0.4);"></div>
-<section class="relative min-h-screen flex items-center bg-[#0a0a0a] overflow-hidden pt-15 ">
+<section id="hero" class="relative min-h-screen flex items-center bg-[#050505] overflow-hidden pt-15 ">
   
   <div class="absolute inset-0 opacity-20 pointer-events-none" 
        style="background-image: radial-gradient(#ea580c 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
@@ -27,12 +27,12 @@
           A creative developer crafting clean, high-performance websites that stand out.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-start gap-6">
-          <a href="#projects" class="group relative px-8 py-4 bg-orange-500 text-black font-black rounded-2xl transition-all hover:bg-orange-400 hover:shadow-[0_0_40px_rgba(234,88,12,0.4)] overflow-hidden">
+        <div  class="flex flex-col sm:flex-row items-start gap-6">
+          <a href="#projects" class=" relative px-8 py-4 bg-orange-500 text-black font-black rounded-2xl  hover:bg-orange-400 hover:shadow-[0_0_40px_rgba(234,88,12,0.4)] overflow-hidden">
             VIEW MY WORK
           </a>
           
-          <a href="#contact" class="px-8 py-4 text-white font-bold border border-white/10 rounded-2xl hover:bg-white/5 transition-all flex items-center gap-2 group">
+          <a href="#contact" class="px-8 py-4 text-white font-bold border border-white/10 rounded-2xl hover:bg-white/5  flex items-center gap-2 ">
             Get in Touch
             <span class="group-hover:translate-x-1 transition-transform text-orange-500">→</span>
           </a>
@@ -56,56 +56,26 @@
     
     <div class="w-full h-full bg-[#111] overflow-hidden relative" 
          style="border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; animation: morph 8s ease-in-out infinite;">
-      <img src="./wp-content/themes/wordpress-default-theme/assets/images/Profile picture.png" 
+      <img src="./wp-content/themes/wp-theme/assets/images/Profile picture.png" 
            alt="Sathiyapriyan" 
            class="w-full h-full object-cover grayscale group-hover/profile:grayscale-0 group-hover/profile:scale-110 transition-all duration-700">
     </div>
   </div>
 
   <div class="absolute -bottom-4 -left-4 bg-[#1a1a1a] border border-white/10 p-4 rounded-2xl shadow-2xl animate-bounce z-30">
-      <p class="text-[10px] text-orange-500 font-mono font-black mb-1">CURRENTLY</p>
-      <p class="text-white text-xs font-bold">Xenqa <br> Digital</p>
+    
+     <a href="http://porty.local/wp-content/uploads/2026/02/SATHIYA_CV.pdf" download="Sathiyapriyan_CV.pdf" class="no-underline">
+    <p class="text-[15px] text-orange-500 mb-0 font-mono font-black hover:text-orange-400 transition-colors cursor-pointer">
+        Download CV
+    </p>
+</a>
+      <!-- <p class="text-white text-xs font-bold">My <br> Resume</p>
+      <p class="text-white text-xs font-bold">click here</p> -->
   </div>
 </div>
 
     </div>
   </div>
 
-  <style>
-    /* 1. Global level-la scrollbar-ah hide panna */
-html, body {
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Edge/IE */
-  overflow-x: hidden; /* Side-la scroll aagatha maari fix panna */
-}
-
-/* 2. Chrome, Safari, and Brave browser-ku */
-html::-webkit-scrollbar, 
-body::-webkit-scrollbar {
-  display: none;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-/* 3. Intha class-ah unga full-page wrapper-kum apply pannalam */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-    @keyframes morph {
-      0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-      100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    }
-    /* Mouse pointer-ah hide panna */
-html, body, a, button {
-  cursor: none !important;
-}
-
-/* Hover pannum pothu cursor animation */
-.cursor-hover-active {
-  transform: translate(-50%, -50%) scale(1.5) !important;
-  background-color: rgba(234, 88, 12, 0.1) !important;
-  border-color: #fff !important;
-}
-  </style>
 </section>
+
